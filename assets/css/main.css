@@ -1,0 +1,241 @@
+:root{
+  --bg-dark: #050507;
+  --muted: #9aa0a6;
+  --accent1: #8ff3d4;
+  --accent2: #ff8fb6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body, #app {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #000000;
+  color: #e6e6e6;
+  overflow-x: hidden;
+}
+
+/* Animated mist gradient background */
+.mist-bg {
+  position: absolute;
+  inset: 0;
+  background: #000000;
+  overflow: hidden;
+}
+
+.mist-bg::before,
+.mist-bg::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+}
+
+.mist-bg::before {
+  background: 
+    radial-gradient(ellipse 800px 600px at 35% 45%, rgba(120, 255, 200, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 700px 700px at 65% 55%, rgba(240, 240, 255, 0.25) 0%, transparent 70%);
+  filter: blur(80px) saturate(1.4) brightness(1.1);
+  animation: mistFloat1 8s ease-in-out infinite alternate, 
+             mistRotate1 12s linear infinite;
+}
+
+.mist-bg::after {
+  background: 
+    radial-gradient(ellipse 900px 700px at 50% 50%, rgba(255, 150, 220, 0.35) 0%, transparent 70%);
+  filter: blur(90px) saturate(1.5) brightness(1.15);
+  animation: mistFloat2 10s ease-in-out infinite alternate,
+             mistRotate2 15s linear infinite reverse;
+}
+
+@keyframes mistFloat1 {
+  0% {
+    transform: translate(-10%, -8%) scale(1);
+  }
+  33% {
+    transform: translate(12%, 10%) scale(1.1);
+  }
+  66% {
+    transform: translate(-8%, 14%) scale(1.15);
+  }
+  100% {
+    transform: translate(10%, -10%) scale(1.05);
+  }
+}
+
+@keyframes mistFloat2 {
+  0% {
+    transform: translate(8%, 10%) scale(1);
+  }
+  25% {
+    transform: translate(-12%, 6%) scale(1.12);
+  }
+  50% {
+    transform: translate(6%, -14%) scale(1.08);
+  }
+  75% {
+    transform: translate(-6%, 12%) scale(1.15);
+  }
+  100% {
+    transform: translate(10%, -8%) scale(1.06);
+  }
+}
+
+@keyframes mistRotate1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mistRotate2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle film grain overlay */
+.film-grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  mix-blend-mode: overlay;
+  opacity: 0.04;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)"/></svg>');
+  background-size: 400px 400px;
+  animation: grainShift 10s steps(8) infinite;
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 10%); }
+  50% { transform: translate(10%, 5%); }
+  60% { transform: translate(5%, -5%); }
+  70% { transform: translate(-10%, -10%); }
+  80% { transform: translate(10%, 10%); }
+  90% { transform: translate(-5%, 5%); }
+}
+
+/* Loading screen */
+.loading-fullscreen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #040405;
+  z-index: 9999;
+}
+
+.logo-wrap {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-sig {
+  width: 280px;
+  opacity: 0;
+  transform: scale(0.96);
+  animation: logoFadeIn 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             logoPulse 3s ease-in-out infinite 1.8s;
+}
+
+@keyframes logoFadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 0 rgba(143, 243, 212, 0));
+  }
+  50% {
+    filter: drop-shadow(0 0 24px rgba(143, 243, 212, 0.12));
+  }
+}
+
+/* Smooth page transitions */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.page-transition-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Utility: Hidden scrollbar but keep functionality */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Responsive optimizations */
+@media (max-width: 920px) {
+  body {
+    font-size: 14px;
+  }
+  
+  /* Reduce animation intensity on mobile for better performance */
+  .mist-bg::before,
+  .mist-bg::after {
+    animation-duration: 12s, 18s;
+  }
+  
+  /* Simplify grain animation */
+  .film-grain {
+    opacity: 0.02;
+    animation-duration: 15s;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  
+  /* Further reduce animations for very small screens */
+  .mist-bg::before,
+  .mist-bg::after {
+    filter: blur(60px) saturate(1.2) brightness(1);
+  }
+}

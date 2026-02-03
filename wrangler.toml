@@ -1,0 +1,9 @@
+name = "favilances"
+main = "src/main.js"
+compatibility_date = "2026-01-28"
+
+[build]
+command = "npm run build"
+path = "dist" 
+[site]
+bucket = "./dist"
