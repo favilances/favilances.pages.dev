@@ -967,7 +967,7 @@ export default {
 .blog-article-content :deep(pre code) {
   background: none;
   padding: 0;
-  color: rgba(230, 230, 230, 0.9);
+  color: inherit;
 }
 
 .blog-article-content :deep(ul),

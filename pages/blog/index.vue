@@ -248,7 +248,7 @@ useHead({
 .blog-page-content :deep(pre code) {
   background: none;
   padding: 0;
-  color: rgba(230, 230, 230, 0.9);
+  color: inherit;
 }
 
 .blog-expand-enter-active,
