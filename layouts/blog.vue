@@ -19,7 +19,7 @@
 
     <footer class="p-8 border-t border-white/5">
       <div class="text-sm text-gray-400 text-center">
-        © 2025 noirLang
+        © 2026 noirLang
       </div>
     </footer>
   </div>

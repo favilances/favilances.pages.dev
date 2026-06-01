@@ -12,7 +12,7 @@
         <div class="footer-content">
           <div class="footer-left">
             <h2 class="footer-title">Favilances Noir</h2>
-            <div class="copy">© 2025 noirLang</div>
+            <div class="copy">© 2026 noirLang</div>
           </div>
           
           <button class="scroll-top" @click="scrollTop" title="Back to top">
