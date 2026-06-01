@@ -35,13 +35,29 @@ export default defineNuxtConfig({
     }
   },
   content: {
+    highlight: {
+      theme: 'github-dark',
+      langs: [
+        'js',
+        'jsx',
+        'json',
+        'ts',
+        'tsx',
+        'vue',
+        'css',
+        'html',
+        'bash',
+        'md',
+        'mdc',
+        'yaml',
+        'python',
+        'rust'
+      ]
+    },
     markdown: {
       toc: {
         depth: 3,
         searchDepth: 3
-      },
-      highlight: {
-        theme: 'github-dark'
       }
     }
   }
